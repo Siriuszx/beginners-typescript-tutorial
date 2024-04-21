@@ -1,12 +1,16 @@
 import { expect, it } from "vitest";
 
+type DemoError = {
+  message: string;
+};
+
 const tryCatchDemo = (state: "fail" | "succeed") => {
   try {
     if (state === "fail") {
       throw new Error("Failure!");
     }
   } catch (e) {
-    return e.message;
+    return (e as DemoError).message;
   }
 };
 
